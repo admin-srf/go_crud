@@ -4,8 +4,12 @@ APP_NAME=go_crud
 
 default: run-with-docs
 
+
+dependencies:
+	@go install
+
 test:
-	@go test ./ ..
+	@go test
 
 run:
 	@go run main.go
