@@ -93,6 +93,31 @@ paths:
       summary: Authenticate
       tags:
       - auth
+  /me/:
+    get:
+      consumes:
+      - application/json
+      description: List all users on platform
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/schemas.User'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/handler.ErrorResponse'
+      summary: Users
+      tags:
+      - user
   /signup:
     post:
       consumes:

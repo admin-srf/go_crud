@@ -9,7 +9,7 @@ dependencies:
 	@go install
 
 test:
-	@go test
+	@go test .
 
 run:
 	@go run main.go

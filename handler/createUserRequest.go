@@ -2,6 +2,7 @@ package handler
 
 import (
 	"github.com/admin-srf/go_crud/schemas"
+	"github.com/admin-srf/go_crud/services"
 )
 
 type CreateUserRequest struct {
@@ -12,11 +13,11 @@ type CreateUserRequest struct {
 
 func (r *CreateUserRequest) Validate() error {
 	if r.Name == "" {
-		return errParamIsRequired("name", "string")
+		return services.ErrParamIsRequired("name", "string")
 	}
 
 	if r.Password == "" {
-		return errParamIsRequired("password", "string")
+		return services.ErrParamIsRequired("password", "string")
 	}
 	return nil
 }

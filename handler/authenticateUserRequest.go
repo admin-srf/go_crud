@@ -1,5 +1,7 @@
 package handler
 
+import "github.com/admin-srf/go_crud/services"
+
 type AuthenticateUserRequest struct {
 	Email    string `json:"email"`
 	Password string `json:"password"`
@@ -7,11 +9,11 @@ type AuthenticateUserRequest struct {
 
 func (r *AuthenticateUserRequest) Validate() error {
 	if r.Email == "" {
-		return errParamIsRequired("name", "string")
+		return services.ErrParamIsRequired("name", "string")
 	}
 
 	if r.Password == "" {
-		return errParamIsRequired("password", "string")
+		return services.ErrParamIsRequired("password", "string")
 	}
 	return nil
 }

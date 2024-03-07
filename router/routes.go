@@ -26,8 +26,16 @@ func initializerRoutes(router *gin.Engine) {
 	private := router.Group(basePath)
 	private.Use(handler.VerifyJwt)
 	{
-		private.GET("/users/:userId", handler.GetUserHandler)
-		private.GET("/users/", handler.ListUsersHandler)
+
+		users := private.Group("/users")
+		{
+			users.GET("/:userId", handler.GetUserHandler)
+			users.GET("/", handler.ListUsersHandler)
+		}
+		me := private.Group("/me")
+		{
+			me.GET("/", handler.GetCurrentUsersHandler)
+		}
 	}
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))

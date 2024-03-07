@@ -26,6 +26,7 @@ func VerifyJwt(c *gin.Context) {
 		})
 		return
 	}
+	c.Set("userID", claims.UserID)
 	c.Next()
 
 }
